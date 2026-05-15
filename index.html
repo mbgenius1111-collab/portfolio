@@ -1,0 +1,1447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Muhammad Bilawal | MBC RCM — Medical Billing Consultancy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+/* ════════════════════════════════════════════
+   ROOT & RESET
+════════════════════════════════════════════ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#0D2149;
+  --navy2:#152d62;
+  --gold:#C8960C;
+  --gold2:#E8B520;
+  --cream:#FBF8F2;
+  --white:#FFFFFF;
+  --dark:#0A0A0A;
+  --gray:#6B7280;
+  --lgray:#F3F4F6;
+  --red:#DC2626;
+  --green:#059669;
+  --accent:#1D4ED8;
+  --ff-head:'Playfair Display',Georgia,serif;
+  --ff-body:'DM Sans',sans-serif;
+  --ff-mono:'DM Mono',monospace;
+  --transition:0.4s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:var(--ff-body);background:var(--cream);color:var(--dark);overflow-x:hidden;line-height:1.6}
+a{text-decoration:none;color:inherit}
+img{max-width:100%}
+
+/* ════════════════════════════════════════════
+   SCROLLBAR
+════════════════════════════════════════════ */
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:var(--navy)}
+::-webkit-scrollbar-thumb{background:var(--gold);border-radius:3px}
+
+/* ════════════════════════════════════════════
+   NAV
+════════════════════════════════════════════ */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:1000;
+  background:rgba(13,33,73,0.97);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(200,150,12,0.2);
+  padding:14px 40px;
+  display:flex;align-items:center;justify-content:space-between;
+  transition:var(--transition);
+}
+.nav-brand{
+  font-family:var(--ff-head);font-size:1.3rem;color:var(--white);letter-spacing:0.02em;
+}
+.nav-brand span{color:var(--gold)}
+.nav-links{display:flex;gap:28px;list-style:none}
+.nav-links a{
+  font-size:.82rem;letter-spacing:.12em;text-transform:uppercase;
+  color:rgba(255,255,255,0.7);transition:color .25s;font-weight:500;
+}
+.nav-links a:hover{color:var(--gold)}
+.nav-cta{
+  background:var(--gold);color:var(--navy);
+  padding:8px 20px;border-radius:4px;
+  font-size:.8rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+  transition:var(--transition);
+}
+.nav-cta:hover{background:var(--gold2);transform:translateY(-1px)}
+
+/* ════════════════════════════════════════════
+   HERO
+════════════════════════════════════════════ */
+#hero{
+  min-height:100vh;
+  background:var(--navy);
+  display:flex;align-items:center;justify-content:center;
+  position:relative;overflow:hidden;padding:120px 40px 80px;
+}
+.hero-bg-grid{
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(200,150,12,0.04) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(200,150,12,0.04) 1px,transparent 1px);
+  background-size:60px 60px;
+  animation:gridMove 20s linear infinite;
+}
+@keyframes gridMove{0%{transform:translateY(0)}100%{transform:translateY(60px)}}
+.hero-orb{
+  position:absolute;width:600px;height:600px;border-radius:50%;
+  background:radial-gradient(circle,rgba(200,150,12,0.08) 0%,transparent 70%);
+  top:-100px;right:-100px;animation:pulse 6s ease-in-out infinite;
+}
+.hero-orb2{
+  position:absolute;width:400px;height:400px;border-radius:50%;
+  background:radial-gradient(circle,rgba(29,78,216,0.12) 0%,transparent 70%);
+  bottom:-80px;left:-80px;animation:pulse 8s ease-in-out infinite reverse;
+}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}
+.hero-content{
+  position:relative;z-index:2;text-align:center;max-width:900px;
+}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(200,150,12,0.12);border:1px solid rgba(200,150,12,0.3);
+  color:var(--gold2);padding:6px 16px;border-radius:20px;
+  font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;font-weight:500;
+  margin-bottom:28px;
+  animation:fadeDown .8s ease both;
+}
+.hero-badge::before{content:'';width:6px;height:6px;background:var(--gold);border-radius:50%;animation:blink 1.5s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
+.hero-title{
+  font-family:var(--ff-head);
+  font-size:clamp(2.6rem,6vw,5rem);
+  line-height:1.08;color:var(--white);
+  margin-bottom:20px;
+  animation:fadeUp .9s ease .1s both;
+}
+.hero-title .gold{color:var(--gold)}
+.hero-subtitle{
+  font-size:1.15rem;color:rgba(255,255,255,0.65);
+  max-width:680px;margin:0 auto 16px;
+  animation:fadeUp .9s ease .2s both;
+}
+.hero-tagline{
+  font-family:var(--ff-mono);font-size:.95rem;
+  color:var(--gold2);opacity:.85;letter-spacing:.03em;
+  margin-bottom:44px;
+  animation:fadeUp .9s ease .3s both;
+}
+.hero-ctas{
+  display:flex;gap:16px;justify-content:center;flex-wrap:wrap;
+  animation:fadeUp .9s ease .4s both;
+}
+.btn-primary{
+  background:var(--gold);color:var(--navy);
+  padding:14px 32px;border-radius:5px;
+  font-weight:700;font-size:.9rem;letter-spacing:.04em;
+  transition:var(--transition);display:inline-flex;align-items:center;gap:8px;
+}
+.btn-primary:hover{background:var(--gold2);transform:translateY(-2px);box-shadow:0 12px 32px rgba(200,150,12,.35)}
+.btn-outline{
+  border:1.5px solid rgba(255,255,255,0.3);color:var(--white);
+  padding:14px 32px;border-radius:5px;
+  font-weight:500;font-size:.9rem;letter-spacing:.04em;
+  transition:var(--transition);
+}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-2px)}
+.hero-stats{
+  display:flex;gap:0;justify-content:center;flex-wrap:wrap;
+  margin-top:72px;border-top:1px solid rgba(255,255,255,0.08);
+  padding-top:40px;
+  animation:fadeUp .9s ease .5s both;
+}
+.hstat{
+  flex:1;min-width:150px;padding:0 32px;
+  border-right:1px solid rgba(255,255,255,0.08);
+}
+.hstat:last-child{border-right:none}
+.hstat-num{
+  font-family:var(--ff-head);font-size:2.6rem;
+  color:var(--gold);font-weight:900;line-height:1;display:block;
+}
+.hstat-label{font-size:.78rem;color:rgba(255,255,255,0.5);letter-spacing:.08em;text-transform:uppercase;margin-top:6px}
+
+/* ════════════════════════════════════════════
+   SECTION WRAPPER
+════════════════════════════════════════════ */
+section{padding:96px 40px}
+.section-inner{max-width:1100px;margin:0 auto}
+.section-tag{
+  font-family:var(--ff-mono);font-size:.75rem;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--gold);
+  margin-bottom:12px;display:block;
+}
+.section-title{
+  font-family:var(--ff-head);font-size:clamp(1.9rem,4vw,3rem);
+  line-height:1.1;color:var(--navy);margin-bottom:16px;
+}
+.section-title.light{color:var(--white)}
+.section-lead{
+  font-size:1.05rem;color:var(--gray);max-width:620px;line-height:1.75;
+}
+.section-lead.light{color:rgba(255,255,255,0.65)}
+.divider{width:48px;height:3px;background:var(--gold);margin:20px 0 32px;border-radius:2px}
+
+/* ════════════════════════════════════════════
+   PROBLEM SECTION
+════════════════════════════════════════════ */
+#problem{background:var(--white)}
+.problem-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:60px;align-items:start;
+}
+.problem-text p{font-size:1rem;color:var(--gray);line-height:1.8;margin-bottom:16px}
+.prob-list{list-style:none;margin-top:24px}
+.prob-list li{
+  display:flex;align-items:flex-start;gap:12px;
+  padding:12px 0;border-bottom:1px solid var(--lgray);
+  font-size:.95rem;color:var(--dark);
+}
+.prob-list li::before{
+  content:'✗';color:var(--red);font-weight:700;font-size:1rem;flex-shrink:0;margin-top:1px;
+}
+.prob-cards{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.prob-card{
+  background:var(--navy);border-radius:10px;
+  padding:28px 24px;text-align:center;
+  border:1px solid rgba(200,150,12,0.15);
+  transition:var(--transition);
+}
+.prob-card:hover{transform:translateY(-4px);border-color:var(--gold)}
+.prob-num{
+  font-family:var(--ff-head);font-size:2.4rem;color:var(--gold);font-weight:900;
+  line-height:1;display:block;
+}
+.prob-desc{font-size:.8rem;color:rgba(255,255,255,0.6);margin-top:8px;line-height:1.5}
+
+/* ════════════════════════════════════════════
+   PROCESS
+════════════════════════════════════════════ */
+#process{background:var(--navy);position:relative;overflow:hidden}
+#process::before{
+  content:'';position:absolute;top:0;left:0;right:0;bottom:0;
+  background:
+    radial-gradient(ellipse 60% 50% at 80% 20%, rgba(200,150,12,0.06) 0%,transparent 60%),
+    radial-gradient(ellipse 50% 60% at 10% 80%, rgba(29,78,216,0.08) 0%,transparent 60%);
+}
+.process-steps{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:60px;
+  position:relative;
+}
+.process-steps::before{
+  content:'';position:absolute;top:36px;left:5%;right:5%;height:2px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);
+  z-index:0;
+}
+.step{
+  position:relative;z-index:1;text-align:center;
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(200,150,12,0.12);
+  border-radius:12px;padding:32px 20px 28px;
+  transition:var(--transition);
+}
+.step:hover{
+  background:rgba(200,150,12,0.08);
+  border-color:var(--gold);
+  transform:translateY(-6px);
+}
+.step-num{
+  width:52px;height:52px;border-radius:50%;
+  background:var(--gold);color:var(--navy);
+  font-family:var(--ff-head);font-weight:900;font-size:1.25rem;
+  display:flex;align-items:center;justify-content:center;
+  margin:0 auto 20px;
+  box-shadow:0 0 0 6px rgba(200,150,12,0.15);
+}
+.step-title{font-size:.9rem;font-weight:600;color:var(--white);margin-bottom:8px;line-height:1.3}
+.step-desc{font-size:.78rem;color:rgba(255,255,255,0.45);line-height:1.6}
+
+/* ════════════════════════════════════════════
+   BENCHMARKS
+════════════════════════════════════════════ */
+#benchmarks{background:var(--cream)}
+.bench-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:20px;margin-top:60px}
+.bench-card{
+  background:var(--white);border-radius:12px;
+  padding:32px 20px;text-align:center;
+  border:1px solid rgba(0,0,0,0.06);
+  box-shadow:0 2px 20px rgba(0,0,0,0.05);
+  transition:var(--transition);
+  position:relative;overflow:hidden;
+}
+.bench-card::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:3px;
+  background:var(--gold);transform:scaleX(0);transform-origin:left;
+  transition:transform .4s ease;
+}
+.bench-card:hover::after{transform:scaleX(1)}
+.bench-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,0.1)}
+.bench-label{
+  font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--gray);margin-bottom:20px;
+}
+.bench-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.bench-tag{font-size:.68rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase}
+.bench-tag.ind{color:var(--gray)}
+.bench-tag.mbc{color:var(--green)}
+.bench-val{font-family:var(--ff-head);font-size:1.4rem;font-weight:700}
+.bench-val.ind{color:var(--gray)}
+.bench-val.mbc{color:var(--navy)}
+.bench-bar-wrap{height:6px;background:var(--lgray);border-radius:3px;margin-top:16px;overflow:hidden}
+.bench-bar{height:100%;border-radius:3px;background:var(--gold);transition:width 1.5s ease}
+
+/* ════════════════════════════════════════════
+   CASE STUDIES
+════════════════════════════════════════════ */
+#casestudies{background:var(--white)}
+.cs-tabs{display:flex;gap:0;margin-bottom:48px;border:1px solid var(--lgray);border-radius:8px;overflow:hidden}
+.cs-tab{
+  flex:1;padding:14px 20px;text-align:center;
+  font-size:.82rem;font-weight:600;letter-spacing:.04em;
+  cursor:pointer;transition:var(--transition);
+  color:var(--gray);border:none;background:var(--white);
+}
+.cs-tab.active{background:var(--navy);color:var(--gold)}
+.cs-tab:hover:not(.active){background:var(--lgray);color:var(--navy)}
+.cs-panel{display:none}
+.cs-panel.active{display:block;animation:fadeIn .4s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.cs-card{
+  background:var(--lgray);border-radius:16px;
+  padding:48px;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;
+  border-left:4px solid var(--gold);
+}
+.cs-meta{font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;font-weight:600}
+.cs-title{font-family:var(--ff-head);font-size:1.8rem;color:var(--navy);margin-bottom:20px}
+.cs-context{font-size:.92rem;color:var(--gray);line-height:1.75;margin-bottom:24px}
+.cs-section-head{
+  font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--navy);font-weight:700;margin-bottom:12px;
+  display:flex;align-items:center;gap:8px;
+}
+.cs-section-head::after{content:'';flex:1;height:1px;background:var(--lgray)}
+.cs-findings{list-style:none}
+.cs-findings li{
+  display:flex;align-items:flex-start;gap:10px;
+  font-size:.88rem;color:var(--dark);padding:7px 0;
+  border-bottom:1px solid rgba(0,0,0,0.06);line-height:1.5;
+}
+.cs-findings li::before{content:'→';color:var(--red);font-weight:700;flex-shrink:0;margin-top:1px}
+.cs-results{
+  display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:24px;
+}
+.cs-result{
+  background:var(--navy);border-radius:10px;padding:22px 18px;text-align:center;
+}
+.cs-result-num{
+  font-family:var(--ff-head);font-size:2rem;color:var(--gold);
+  font-weight:900;line-height:1;display:block;
+}
+.cs-result-label{font-size:.72rem;color:rgba(255,255,255,0.55);margin-top:6px;line-height:1.4}
+
+/* ════════════════════════════════════════════
+   WHY MBC
+════════════════════════════════════════════ */
+#why{background:var(--navy);position:relative;overflow:hidden}
+.why-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:60px;
+}
+.why-card{
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(200,150,12,0.1);
+  border-radius:14px;padding:36px 28px;
+  transition:var(--transition);
+}
+.why-card:hover{
+  background:rgba(200,150,12,0.06);
+  border-color:rgba(200,150,12,0.4);
+  transform:translateY(-6px);
+}
+.why-icon{
+  width:52px;height:52px;border-radius:10px;
+  background:rgba(200,150,12,0.12);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.5rem;margin-bottom:20px;
+}
+.why-title{font-size:1rem;font-weight:600;color:var(--white);margin-bottom:10px}
+.why-desc{font-size:.85rem;color:rgba(255,255,255,0.5);line-height:1.75}
+
+/* ════════════════════════════════════════════
+   BH INSIGHT (from LinkedIn doc)
+════════════════════════════════════════════ */
+#bhinsight{background:var(--cream)}
+.bh-layout{display:grid;grid-template-columns:1fr 1.2fr;gap:60px;align-items:start;margin-top:60px}
+.bh-stats{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:32px}
+.bh-stat{
+  background:var(--navy);border-radius:10px;padding:24px 20px;text-align:center;
+}
+.bh-stat-num{
+  font-family:var(--ff-head);font-size:2rem;color:var(--gold);
+  font-weight:900;line-height:1;display:block;
+}
+.bh-stat-desc{font-size:.75rem;color:rgba(255,255,255,0.55);margin-top:7px;line-height:1.5}
+.bh-challenges{margin-top:0}
+.challenge-row{
+  display:grid;grid-template-columns:200px 1fr;gap:12px;
+  padding:14px 0;border-bottom:1px solid rgba(0,0,0,0.07);
+}
+.challenge-area{font-size:.83rem;font-weight:600;color:var(--navy)}
+.challenge-why{font-size:.83rem;color:var(--gray);line-height:1.55}
+.bh-pullquote{
+  margin-top:28px;
+  border-left:3px solid var(--gold);
+  padding:20px 24px;
+  background:var(--white);
+  border-radius:0 10px 10px 0;
+}
+.bh-pullquote p{
+  font-style:italic;font-size:1rem;color:var(--navy);line-height:1.7;
+}
+.bh-pullquote cite{
+  display:block;margin-top:10px;font-size:.78rem;color:var(--gray);font-style:normal;
+}
+
+/* ════════════════════════════════════════════
+   SPECIALTIES
+════════════════════════════════════════════ */
+#specialties{background:var(--white)}
+.spec-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:60px;
+}
+.spec-card{
+  background:var(--lgray);border-radius:10px;
+  padding:22px 18px;
+  display:flex;align-items:center;gap:14px;
+  transition:var(--transition);border:1px solid transparent;
+}
+.spec-card:hover{
+  background:var(--navy);border-color:var(--gold);
+  transform:translateX(4px);
+}
+.spec-card:hover .spec-name{color:var(--white)}
+.spec-icon{font-size:1.4rem;flex-shrink:0}
+.spec-name{font-size:.87rem;font-weight:500;color:var(--navy);transition:color .25s}
+
+/* ════════════════════════════════════════════
+   ABOUT / PROFILE
+════════════════════════════════════════════ */
+#about{background:var(--cream)}
+.about-layout{display:grid;grid-template-columns:1fr 1.6fr;gap:60px;align-items:start;margin-top:60px}
+.about-card{
+  background:var(--navy);border-radius:16px;padding:40px 32px;
+  border:1px solid rgba(200,150,12,0.2);
+}
+.about-name{
+  font-family:var(--ff-head);font-size:1.8rem;color:var(--white);margin-bottom:4px;
+}
+.about-role{color:var(--gold);font-size:.85rem;letter-spacing:.06em;text-transform:uppercase;margin-bottom:24px}
+.about-badges{display:flex;flex-direction:column;gap:10px;margin-bottom:28px}
+.badge-row{
+  display:flex;align-items:center;gap:10px;
+  font-size:.83rem;color:rgba(255,255,255,0.75);
+}
+.badge-icon{color:var(--gold);flex-shrink:0}
+.about-divider{height:1px;background:rgba(200,150,12,0.15);margin:24px 0}
+.skill-pills{display:flex;flex-wrap:wrap;gap:8px}
+.pill{
+  background:rgba(200,150,12,0.12);color:var(--gold2);
+  padding:5px 12px;border-radius:20px;font-size:.73rem;
+  font-weight:500;letter-spacing:.04em;
+  border:1px solid rgba(200,150,12,0.2);
+}
+.about-bio p{font-size:.95rem;color:var(--gray);line-height:1.8;margin-bottom:16px}
+.exp-timeline{margin-top:32px}
+.exp-item{
+  display:flex;gap:20px;padding:20px 0;
+  border-bottom:1px solid rgba(0,0,0,0.06);
+}
+.exp-dot{
+  width:12px;height:12px;border-radius:50%;background:var(--gold);
+  flex-shrink:0;margin-top:6px;position:relative;
+}
+.exp-dot::before{
+  content:'';position:absolute;left:50%;bottom:-100%;
+  width:2px;height:calc(100% + 20px);background:rgba(200,150,12,0.2);
+  transform:translateX(-50%);
+}
+.exp-item:last-child .exp-dot::before{display:none}
+.exp-date{font-size:.75rem;color:var(--gray);margin-bottom:4px;font-family:var(--ff-mono)}
+.exp-role{font-size:.95rem;font-weight:600;color:var(--navy);margin-bottom:2px}
+.exp-co{font-size:.82rem;color:var(--gray)}
+
+/* ════════════════════════════════════════════
+   SOCIAL / CONNECT
+════════════════════════════════════════════ */
+#connect{background:var(--navy)}
+.social-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:60px;
+}
+.social-card{
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(255,255,255,0.08);
+  border-radius:12px;padding:28px 24px;
+  display:flex;align-items:center;gap:16px;
+  transition:var(--transition);text-decoration:none;
+}
+.social-card:hover{
+  border-color:var(--gold);
+  background:rgba(200,150,12,0.06);
+  transform:translateY(-3px);
+}
+.social-logo{
+  width:44px;height:44px;border-radius:8px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.3rem;flex-shrink:0;
+}
+.social-info-platform{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:3px}
+.social-info-handle{font-size:.9rem;font-weight:500;color:var(--white)}
+.social-arrow{margin-left:auto;color:rgba(255,255,255,0.3);transition:color .25s}
+.social-card:hover .social-arrow{color:var(--gold)}
+
+/* ════════════════════════════════════════════
+   CTA / AUDIT SECTION
+════════════════════════════════════════════ */
+#cta{
+  background:linear-gradient(135deg,#0D2149 0%,#152d62 50%,#0D2149 100%);
+  text-align:center;padding:120px 40px;position:relative;overflow:hidden;
+}
+#cta::before{
+  content:'';position:absolute;inset:0;
+  background-image:radial-gradient(circle at 30% 50%,rgba(200,150,12,0.07) 0%,transparent 50%),
+    radial-gradient(circle at 70% 50%,rgba(29,78,216,0.1) 0%,transparent 50%);
+}
+.cta-inner{position:relative;z-index:1;max-width:700px;margin:0 auto}
+.cta-eyebrow{
+  display:inline-block;background:rgba(200,150,12,0.12);
+  border:1px solid rgba(200,150,12,0.25);color:var(--gold);
+  padding:6px 20px;border-radius:20px;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;
+  margin-bottom:28px;
+}
+.cta-title{
+  font-family:var(--ff-head);font-size:clamp(2rem,5vw,3.5rem);
+  color:var(--white);margin-bottom:20px;line-height:1.1;
+}
+.cta-sub{font-size:1rem;color:rgba(255,255,255,0.6);margin-bottom:44px;line-height:1.75}
+.cta-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-bottom:40px}
+.cta-contacts{
+  display:flex;gap:32px;justify-content:center;flex-wrap:wrap;
+}
+.cta-contact{
+  display:flex;align-items:center;gap:10px;
+  color:rgba(255,255,255,0.6);font-size:.88rem;
+  transition:color .25s;
+}
+.cta-contact:hover{color:var(--gold)}
+.cta-contact-icon{color:var(--gold)}
+
+/* ════════════════════════════════════════════
+   FOOTER
+════════════════════════════════════════════ */
+footer{
+  background:#060d1e;
+  padding:32px 40px;
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;
+  border-top:1px solid rgba(200,150,12,0.1);
+}
+.footer-brand{font-family:var(--ff-head);color:var(--white);font-size:1.1rem}
+.footer-brand span{color:var(--gold)}
+.footer-copy{font-size:.78rem;color:rgba(255,255,255,0.3)}
+.footer-links{display:flex;gap:20px}
+.footer-links a{font-size:.78rem;color:rgba(255,255,255,0.4);transition:color .2s}
+.footer-links a:hover{color:var(--gold)}
+
+/* ════════════════════════════════════════════
+   ANIMATIONS / REVEAL
+════════════════════════════════════════════ */
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}
+@keyframes fadeDown{from{opacity:0;transform:translateY(-20px)}to{opacity:1;transform:none}}
+.reveal{opacity:0;transform:translateY(40px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:none}
+.reveal-delay-1{transition-delay:.1s}
+.reveal-delay-2{transition-delay:.2s}
+.reveal-delay-3{transition-delay:.3s}
+.reveal-delay-4{transition-delay:.4s}
+
+/* ════════════════════════════════════════════
+   RESPONSIVE
+════════════════════════════════════════════ */
+@media(max-width:900px){
+  .problem-grid,.cs-card,.about-layout,.bh-layout{grid-template-columns:1fr}
+  .bench-grid{grid-template-columns:repeat(2,1fr)}
+  .process-steps{grid-template-columns:repeat(2,1fr)}
+  .process-steps::before{display:none}
+  .why-grid{grid-template-columns:1fr 1fr}
+  .spec-grid{grid-template-columns:repeat(2,1fr)}
+  .social-grid{grid-template-columns:1fr 1fr}
+  nav .nav-links{display:none}
+  .hero-stats{gap:0}
+  .hstat{padding:0 16px}
+}
+@media(max-width:600px){
+  section{padding:72px 20px}
+  nav{padding:14px 20px}
+  .bench-grid{grid-template-columns:1fr}
+  .why-grid{grid-template-columns:1fr}
+  .spec-grid{grid-template-columns:1fr}
+  .social-grid{grid-template-columns:1fr}
+  .cs-results{grid-template-columns:1fr}
+  .prob-cards{grid-template-columns:1fr}
+  .bh-stats{grid-template-columns:1fr}
+  .hero-stats{flex-direction:column;text-align:center}
+  .hstat{border-right:none;border-bottom:1px solid rgba(255,255,255,0.08);padding:20px 0}
+  footer{flex-direction:column;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════
+     NAV
+══════════════════════════════════════ -->
+<nav id="main-nav">
+  <div class="nav-brand">MBC <span>RCM</span></div>
+  <ul class="nav-links">
+    <li><a href="#problem">The Problem</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#casestudies">Case Studies</a></li>
+    <li><a href="#specialties">Specialties</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#connect">Connect</a></li>
+  </ul>
+  <a class="nav-cta" href="mailto:info@mbcrcm.com">Free Audit →</a>
+</nav>
+
+<!-- ══════════════════════════════════════
+     HERO
+══════════════════════════════════════ -->
+<section id="hero">
+  <div class="hero-bg-grid"></div>
+  <div class="hero-orb"></div>
+  <div class="hero-orb2"></div>
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span></span>
+      Revenue Cycle Management · US Healthcare · Remote
+    </div>
+    <h1 class="hero-title">
+      Medical Billing That<br/>
+      <span class="gold">Recovers Every Dollar</span><br/>
+      You've Earned
+    </h1>
+    <p class="hero-subtitle">
+      MBC RCM is a specialized Revenue Cycle Management consultancy serving US physician practices — with 7+ years of hands-on expertise, a 97%+ clean claim rate, and a track record of recovering six-figure revenue from denial-heavy billing operations.
+    </p>
+    <p class="hero-tagline">"From Claims to Collections — We Handle It All"</p>
+    <div class="hero-ctas">
+      <a href="mailto:info@mbcrcm.com" class="btn-primary">Get Your Free Billing Audit →</a>
+      <a href="https://www.mbcrcm.com" target="_blank" class="btn-outline">Visit mbcrcm.com</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hstat">
+        <span class="hstat-num counter" data-target="97">0</span>%
+        <div class="hstat-label">Clean Claim Rate</div>
+      </div>
+      <div class="hstat">
+        <span class="hstat-num counter" data-target="78">0</span>%+
+        <div class="hstat-label">Appeal Success Rate</div>
+      </div>
+      <div class="hstat">
+        <span class="hstat-num counter" data-target="35">0</span>&lt;
+        <div class="hstat-label">Days in AR</div>
+      </div>
+      <div class="hstat">
+        <span class="hstat-num counter" data-target="95">0</span>%+
+        <div class="hstat-label">Net Collection Rate</div>
+      </div>
+      <div class="hstat">
+        <span class="hstat-num counter" data-target="7">0</span>+
+        <div class="hstat-label">Years Experience</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     THE PROBLEM
+══════════════════════════════════════ -->
+<section id="problem">
+  <div class="section-inner">
+    <span class="section-tag reveal">The Revenue Problem</span>
+    <h2 class="section-title reveal">US Physician Practices Lose 15–30% of Revenue Every Year</h2>
+    <div class="divider reveal"></div>
+    <div class="problem-grid">
+      <div class="problem-text reveal">
+        <p>Most practices don't know how much revenue they're leaving on the table — because the losses happen silently, across hundreds of claims, every single month.</p>
+        <p>Denied claims go unworked. Underpayments go unnoticed. Staff are stretched between clinical and billing duties. And the result is a revenue gap that compounds over time.</p>
+        <p>MBC RCM was built specifically to close that gap — with a structured, specialty-specific billing process that treats your revenue with the same discipline a CFO would.</p>
+        <ul class="prob-list">
+          <li>Claims denied due to coding errors and mismatched modifiers</li>
+          <li>Eligibility not verified before patient visits</li>
+          <li>65% of denied claims never resubmitted or appealed</li>
+          <li>No follow-up on unpaid or aging AR balances</li>
+          <li>Staff overwhelmed handling both clinical and billing duties</li>
+          <li>Zero visibility into where revenue is leaking</li>
+        </ul>
+      </div>
+      <div class="prob-cards reveal reveal-delay-2">
+        <div class="prob-card">
+          <span class="prob-num">15–30%</span>
+          <div class="prob-desc">of revenue lost annually — industry average across US physician practices</div>
+        </div>
+        <div class="prob-card">
+          <span class="prob-num">65%</span>
+          <div class="prob-desc">of denied claims are never resubmitted — revenue permanently abandoned</div>
+        </div>
+        <div class="prob-card">
+          <span class="prob-num">$118</span>
+          <div class="prob-desc">average cost to rework a single denied claim (AMA Denials Benchmark)</div>
+        </div>
+        <div class="prob-card">
+          <span class="prob-num">$180K+</span>
+          <div class="prob-desc">annual revenue lost by a mid-size practice with unmanaged denial rates (MGMA)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     8-STEP PROCESS
+══════════════════════════════════════ -->
+<section id="process">
+  <div class="section-inner">
+    <span class="section-tag reveal">Our Methodology</span>
+    <h2 class="section-title light reveal">Our End-to-End RCM Process</h2>
+    <div class="divider reveal"></div>
+    <p class="section-lead light reveal">8 structured steps — from the first patient appointment to the final dollar collected. Every claim tracked. Every denial worked. Every dollar pursued.</p>
+    <div class="process-steps">
+      <div class="step reveal reveal-delay-1">
+        <div class="step-num">1</div>
+        <div class="step-title">Eligibility Verification</div>
+        <div class="step-desc">Real-time eligibility checks 48 hrs before every visit — benefits, copays, session limits, prior auth requirements confirmed before the patient arrives.</div>
+      </div>
+      <div class="step reveal reveal-delay-2">
+        <div class="step-num">2</div>
+        <div class="step-title">Demographics & Insurance</div>
+        <div class="step-desc">Patient demographics, insurance IDs, and payer data captured accurately at intake — preventing downstream rejections from preventable data entry errors.</div>
+      </div>
+      <div class="step reveal reveal-delay-3">
+        <div class="step-num">3</div>
+        <div class="step-title">Medical Coding</div>
+        <div class="step-desc">Specialty-specific ICD-10, CPT, and HCPCS coding with correct modifiers — NCCI edit compliance checked on every claim before submission.</div>
+      </div>
+      <div class="step reveal reveal-delay-4">
+        <div class="step-num">4</div>
+        <div class="step-title">Charge Entry & Scrubbing</div>
+        <div class="step-desc">Charges entered and scrubbed against payer-specific fee schedules. Every claim reviewed for completeness before leaving the queue.</div>
+      </div>
+      <div class="step reveal reveal-delay-1">
+        <div class="step-num">5</div>
+        <div class="step-title">Claims Submission</div>
+        <div class="step-desc">Clean claims submitted within 24–48 hours of service via Change Healthcare, Availity, OfficeAlly, and 5+ clearinghouses. Transmission reports monitored daily.</div>
+      </div>
+      <div class="step reveal reveal-delay-2">
+        <div class="step-num">6</div>
+        <div class="step-title">Payment Posting</div>
+        <div class="step-desc">ERAs/EOBs posted with precision — insurance payments, write-offs, adjustments, and patient balances reconciled daily. Underpayments flagged immediately.</div>
+      </div>
+      <div class="step reveal reveal-delay-3">
+        <div class="step-num">7</div>
+        <div class="step-title">Denial Management</div>
+        <div class="step-desc">Every denial analyzed for root cause. Corrected claims resubmitted. Appeals filed with clinical documentation. 78%+ appeal success rate consistently maintained.</div>
+      </div>
+      <div class="step reveal reveal-delay-4">
+        <div class="step-num">8</div>
+        <div class="step-title">AR Follow-Up</div>
+        <div class="step-desc">Aggressive aging AR follow-up across all payer buckets. KPI dashboards updated weekly — collection rates, denial trends, and days-in-AR tracked in real time.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     BENCHMARKS
+══════════════════════════════════════ -->
+<section id="benchmarks">
+  <div class="section-inner">
+    <span class="section-tag reveal">Performance Data</span>
+    <h2 class="section-title reveal">MBC vs. Industry Benchmarks</h2>
+    <div class="divider reveal"></div>
+    <p class="section-lead reveal">Independent industry benchmarks from MGMA and AMA — measured against MBC RCM's actual performance across client portfolios.</p>
+    <div class="bench-grid">
+      <div class="bench-card reveal reveal-delay-1">
+        <div class="bench-label">Clean Claim Rate (1st Pass)</div>
+        <div class="bench-row">
+          <span class="bench-tag ind">Industry Avg</span>
+          <span class="bench-val ind">75–85%</span>
+        </div>
+        <div class="bench-row">
+          <span class="bench-tag mbc">MBC RCM</span>
+          <span class="bench-val mbc">97%+</span>
+        </div>
+        <div class="bench-bar-wrap"><div class="bench-bar" data-width="97" style="width:0%"></div></div>
+      </div>
+      <div class="bench-card reveal reveal-delay-2">
+        <div class="bench-label">Denial Rate</div>
+        <div class="bench-row">
+          <span class="bench-tag ind">Industry Avg</span>
+          <span class="bench-val ind">15–25%</span>
+        </div>
+        <div class="bench-row">
+          <span class="bench-tag mbc">MBC RCM</span>
+          <span class="bench-val mbc">Under 8%</span>
+        </div>
+        <div class="bench-bar-wrap"><div class="bench-bar" data-width="92" style="width:0%"></div></div>
+      </div>
+      <div class="bench-card reveal reveal-delay-3">
+        <div class="bench-label">Days in AR</div>
+        <div class="bench-row">
+          <span class="bench-tag ind">Industry Avg</span>
+          <span class="bench-val ind">50–65 days</span>
+        </div>
+        <div class="bench-row">
+          <span class="bench-tag mbc">MBC RCM</span>
+          <span class="bench-val mbc">Under 35</span>
+        </div>
+        <div class="bench-bar-wrap"><div class="bench-bar" data-width="75" style="width:0%"></div></div>
+      </div>
+      <div class="bench-card reveal reveal-delay-4">
+        <div class="bench-label">Net Collection Rate</div>
+        <div class="bench-row">
+          <span class="bench-tag ind">Industry Avg</span>
+          <span class="bench-val ind">55–70%</span>
+        </div>
+        <div class="bench-row">
+          <span class="bench-tag mbc">MBC RCM</span>
+          <span class="bench-val mbc">95%+</span>
+        </div>
+        <div class="bench-bar-wrap"><div class="bench-bar" data-width="95" style="width:0%"></div></div>
+      </div>
+      <div class="bench-card reveal reveal-delay-4">
+        <div class="bench-label">Appeal Success Rate</div>
+        <div class="bench-row">
+          <span class="bench-tag ind">Industry Avg</span>
+          <span class="bench-val ind">40–50%</span>
+        </div>
+        <div class="bench-row">
+          <span class="bench-tag mbc">MBC RCM</span>
+          <span class="bench-val mbc">78%+</span>
+        </div>
+        <div class="bench-bar-wrap"><div class="bench-bar" data-width="78" style="width:0%"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     CASE STUDIES
+══════════════════════════════════════ -->
+<section id="casestudies">
+  <div class="section-inner">
+    <span class="section-tag reveal">Proven Results</span>
+    <h2 class="section-title reveal">Real Client Case Studies</h2>
+    <div class="divider reveal"></div>
+    <p class="section-lead reveal">These are real interventions with real numbers. Client identities are anonymized per confidentiality agreements.</p>
+
+    <div class="cs-tabs reveal" style="margin-top:48px">
+      <button class="cs-tab active" onclick="showCS(0)">🦴 Orthopedics · Texas</button>
+      <button class="cs-tab" onclick="showCS(1)">🩺 Internal Medicine · Florida</button>
+      <button class="cs-tab" onclick="showCS(2)">🧠 Behavioral Health · Pennsylvania</button>
+      <button class="cs-tab" onclick="showCS(3)">📊 Collection Rate Comparison</button>
+    </div>
+
+    <!-- CS 1 -->
+    <div class="cs-panel active" id="cs-0">
+      <div class="cs-card">
+        <div>
+          <div class="cs-meta">Case Study 01 · Orthopedic Surgery</div>
+          <h3 class="cs-title">3-Physician Orthopedic Group — Texas</h3>
+          <p class="cs-context">A three-physician orthopedic group in Texas with heavy surgical billing volume was experiencing a 34% denial rate on surgical claims — nearly triple the acceptable benchmark. Appeals were rarely filed. Revenue was eroding month over month.</p>
+          <div class="cs-section-head">Root Causes Identified</div>
+          <ul class="cs-findings">
+            <li>34% first-pass denial rate on surgical claims — primary issue</li>
+            <li>Mismatched CPT/diagnosis code combinations across 6 recurring code sets</li>
+            <li>Modifier errors — incorrect or missing modifiers on bilateral and add-on procedures</li>
+            <li>Appeals almost never filed after initial denials</li>
+            <li>No pre-authorization tracking system for elective surgical procedures</li>
+          </ul>
+          <div class="cs-section-head" style="margin-top:20px">MBC Intervention</div>
+          <ul class="cs-findings">
+            <li>Full billing audit — 6 recurring coding errors identified and corrected</li>
+            <li>Surgical notes reviewed before coding on all new submissions</li>
+            <li>Corrected claims and appeals filed for 90 days of denied claims</li>
+            <li>Pre-authorization tracking system implemented for elective procedures</li>
+          </ul>
+        </div>
+        <div>
+          <div class="cs-section-head">Results After 90 Days</div>
+          <div class="cs-results">
+            <div class="cs-result">
+              <span class="cs-result-num">34% → 8%</span>
+              <div class="cs-result-label">Denial Rate — best-in-class in 90 days</div>
+            </div>
+            <div class="cs-result">
+              <span class="cs-result-num">$112K</span>
+              <div class="cs-result-label">Recovered in previously denied claims</div>
+            </div>
+            <div class="cs-result">
+              <span class="cs-result-num">+27%</span>
+              <div class="cs-result-label">Net collections increase over 6 months</div>
+            </div>
+            <div class="cs-result">
+              <span class="cs-result-num">90 Days</span>
+              <div class="cs-result-label">From "denial-heavy" to best-in-class billing</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CS 2 -->
+    <div class="cs-panel" id="cs-1">
+      <div class="cs-card">
+        <div>
+          <div class="cs-meta">Case Study 02 · Internal Medicine</div>
+          <h3 class="cs-title">Solo Internal Medicine Physician — Florida</h3>
+          <p class="cs-context">A solo internal medicine physician was struggling with 65 days in AR, a 40% patient collection rate, and underpayments from contracted payers that had gone undetected for months. Cash flow was unstable despite a healthy patient volume.</p>
+          <div class="cs-section-head">Root Causes Identified</div>
+          <ul class="cs-findings">
+            <li>No real-time eligibility verification at front desk — deductibles and copays unknown at visit</li>
+            <li>No protocol to collect patient balances at point of service</li>
+            <li>2 major contracted payers consistently reimbursing below contractual rate</li>
+            <li>No payer reimbursement analysis had ever been performed</li>
+          </ul>
+          <div class="cs-section-head" style="margin-top:20px">MBC Intervention</div>
+          <ul class="cs-findings">
+            <li>Set up real-time eligibility verification at front desk (48 hrs pre-visit)</li>
+            <li>Created patient balance collection protocol — collect copay/deductible at visit</li>
+            <li>Ran payer reimbursement analysis — identified 2 under-paying payers</li>
+            <li>Initiated formal payer dispute with fee schedule documentation</li>
+            <li>Recovered $43,000 in underpayments from contracted payers</li>
+          </ul>
+        </div>
+        <div>
+          <div class="cs-section-head">Before vs. After</div>
+          <div class="cs-results">
+            <div class="cs-result">
+              <span class="cs-result-num">65 → 31</span>
+              <div class="cs-result-label">Days in AR — cut by more than half</div>
+            </div>
+            <div class="cs-result">
+              <span class="cs-result-num">40% → 78%</span>
+              <div class="cs-result-label">Patient collection rate at point of service</div>
+            </div>
+            <div class="cs-result">
+              <span class="cs-result-num">$43,000</span>
+              <div class="cs-result-label">Recovered from underpaying contracted payers</div>
+            </div>
+            <div class="cs-result">
+              <span class="cs-result-num">2 Payers</span>
+              <div class="cs-result-label">Fee schedule disputes filed and resolved</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CS 3 -->
+    <div class="cs-panel" id="cs-2">
+      <div class="cs-card">
+        <div>
+          <div class="cs-meta">Case Study 03 · Behavioral Health</div>
+          <h3 class="cs-title">6-Provider BH Group Practice — Pennsylvania</h3>
+          <p class="cs-context">A group practice with 6 licensed therapists (2 LCSWs, 3 LPCs, 1 Psychiatrist) billing approximately 1,100 claims/month. Despite solid patient volume, a 31% first-pass denial rate was costing the practice an estimated $22,400 in lost revenue every single month.</p>
+          <div class="cs-section-head">Root Causes Identified</div>
+          <ul class="cs-findings">
+            <li>Modifier 95 (telehealth) missing on 38% of virtual session claims</li>
+            <li>ICD-10 codes not updated after DSM-5-TR revision — outdated F-codes triggering auto-review flags</li>
+            <li>One LCSW's NPI not credentialed with 2 major payers — 4 months of claims auto-denied</li>
+            <li>Group therapy claims (90853) submitted without required 'HQ' modifier — 100% denial rate</li>
+            <li>Session limit tracking spreadsheet not synced with EHR — 90 claims filed after annual cap</li>
+          </ul>
+          <div class="cs-section-head" style="margin-top:20px">MBC Intervention</div>
+          <ul class="cs-findings">
+            <li>Full 90-day retrospective audit — corrected claims submitted with proper documentation</li>
+            <li>Fee schedule rebuilt in PM system with accurate CPT-modifier mapping</li>
+            <li>Emergency credentialing for LCSW with 2 payers — 4 months of backlogged claims recovered</li>
+            <li>Automated eligibility verification implemented 48 hours before every appointment</li>
+            <li>Staff trained on documentation requirements that directly impact billing outcomes</li>
+          </ul>
+        </div>
+        <div>
+          <div class="cs-section-head">Results After 90 Days</div>
+          <div class="cs-results">
+            <div class="cs-result">
+              <span class="cs-result-num">31% → 8.2%</span>
+              <div class="cs-result-label">First-pass denial rate reduction</div>
+            </div>
+            <div class="cs-result">
+              <span class="cs-result-num">$67,800</span>
+              <div class="cs-result-label">Revenue recovered from backlogged claims</div>
+            </div>
+            <div class="cs-result">
+              <span class="cs-result-num">+$19,100</span>
+              <div class="cs-result-label">Monthly net revenue increase vs. baseline</div>
+            </div>
+            <div class="cs-result">
+              <span class="cs-result-num">$228,000+</span>
+              <div class="cs-result-label">Annual projected revenue impact</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CS 4 -->
+    <div class="cs-panel" id="cs-3">
+      <div class="cs-card">
+        <div>
+          <div class="cs-meta">Case Study 04 · Collection Rate Turnaround</div>
+          <h3 class="cs-title">Multi-Specialty Practice — Collection Rate Comparison</h3>
+          <p class="cs-context">A multi-specialty practice onboarded MBC RCM mid-year. The Q3 baseline data showed a collection rate of 37.6% on over $2.2M in charges — a major underperformance. After MBC's structured process improvements, Q4 produced $44,805 more revenue on a lower billing volume.</p>
+          <div class="cs-section-head">Q3 Baseline (Before MBC)</div>
+          <ul class="cs-findings">
+            <li>Total Charges: $2,237,704</li>
+            <li>Total Collections: $842,488</li>
+            <li>Collection Rate: 37.6% — significantly below industry standard</li>
+            <li>No denial management protocol in place</li>
+          </ul>
+          <div class="cs-section-head" style="margin-top:20px">Q4 Results (After MBC)</div>
+          <ul class="cs-findings">
+            <li>Total Charges: $2,030,234 (lower billing volume than Q3)</li>
+            <li>Total Collections: $887,293</li>
+            <li>Collection Rate: 43.7% — measurable improvement on reduced volume</li>
+            <li>Denial management + AR follow-up implemented across all payer classes</li>
+          </ul>
+        </div>
+        <div>
+          <div class="cs-section-head">The Bottom Line</div>
+          <div class="cs-results">
+            <div class="cs-result">
+              <span class="cs-result-num">+$115,804</span>
+              <div class="cs-result-label">Extra revenue collected on LOWER billing volume</div>
+            </div>
+            <div class="cs-result">
+              <span class="cs-result-num">37.6% → 43.7%</span>
+              <div class="cs-result-label">Collection rate improvement in one quarter</div>
+            </div>
+            <div class="cs-result">
+              <span class="cs-result-num">$887K</span>
+              <div class="cs-result-label">Q4 collections — highest in practice history</div>
+            </div>
+            <div class="cs-result">
+              <span class="cs-result-num">1 Quarter</span>
+              <div class="cs-result-label">Time to demonstrate measurable ROI</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     WHY MBC
+══════════════════════════════════════ -->
+<section id="why">
+  <div class="section-inner">
+    <span class="section-tag reveal">Why MBC RCM</span>
+    <h2 class="section-title light reveal">Six Reasons Physicians Choose MBC</h2>
+    <div class="divider reveal"></div>
+    <div class="why-grid">
+      <div class="why-card reveal reveal-delay-1">
+        <div class="why-icon">🔍</div>
+        <div class="why-title">Specialty-Specific Expertise</div>
+        <div class="why-desc">Custom billing for every specialty — not one-size-fits-all. Deep expertise in E&M coding, surgical billing, behavioral health, DME, ophthalmology, and everything in between.</div>
+      </div>
+      <div class="why-card reveal reveal-delay-2">
+        <div class="why-icon">📊</div>
+        <div class="why-title">Transparent Reporting</div>
+        <div class="why-desc">Monthly KPI dashboards show what's submitted, paid, denied, and collected. Zero black-box billing. You always know exactly where your revenue stands.</div>
+      </div>
+      <div class="why-card reveal reveal-delay-3">
+        <div class="why-icon">👤</div>
+        <div class="why-title">Dedicated Account Manager</div>
+        <div class="why-desc">Every client gets a direct point of contact — not a call center. You communicate with the person managing your account, who knows your payer mix and practice patterns.</div>
+      </div>
+      <div class="why-card reveal reveal-delay-1">
+        <div class="why-icon">🔒</div>
+        <div class="why-title">Compliance-First Operation</div>
+        <div class="why-desc">100% HIPAA-compliant workflows. Current on all payer policy changes, ICD-10/CPT annual updates, and CMS guidelines. AAPC-trained and HIPAA Certified.</div>
+      </div>
+      <div class="why-card reveal reveal-delay-2">
+        <div class="why-icon">📈</div>
+        <div class="why-title">Performance-Based Mindset</div>
+        <div class="why-desc">Your collections are our responsibility. We don't succeed unless your revenue improves. Every process decision is measured against its direct impact on your bottom line.</div>
+      </div>
+      <div class="why-card reveal reveal-delay-3">
+        <div class="why-icon">⚡</div>
+        <div class="why-title">24–48 Hour Submission</div>
+        <div class="why-desc">Claims submitted within 24–48 hours of service. Every claim tracked from submission to final payment. No aging queues. No missed timely-filing deadlines.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     BH INSIGHT
+══════════════════════════════════════ -->
+<section id="bhinsight">
+  <div class="section-inner">
+    <span class="section-tag reveal">Field Intelligence</span>
+    <h2 class="section-title reveal">Behavioral Health: The Silent Revenue Killer</h2>
+    <div class="divider reveal"></div>
+    <div class="bh-layout">
+      <div class="reveal">
+        <div class="bh-stats">
+          <div class="bh-stat">
+            <span class="bh-stat-num">26%</span>
+            <div class="bh-stat-desc">of BH claims denied on first submission (MGMA)</div>
+          </div>
+          <div class="bh-stat">
+            <span class="bh-stat-num">65%</span>
+            <div class="bh-stat-desc">of those denials never resubmitted or appealed</div>
+          </div>
+          <div class="bh-stat">
+            <span class="bh-stat-num">$118</span>
+            <div class="bh-stat-desc">average cost to rework one denied claim (AMA)</div>
+          </div>
+          <div class="bh-stat">
+            <span class="bh-stat-num">$180K+</span>
+            <div class="bh-stat-desc">annual revenue lost — mid-size BH practice</div>
+          </div>
+        </div>
+        <div class="bh-pullquote">
+          <p>"Behavioral health billing isn't broken because the codes are hard. It's broken because practices treat it like regular medical billing. It isn't."</p>
+          <cite>— Muhammad Bilawal, Founder & RCM Consultant, MBC RCM</cite>
+        </div>
+      </div>
+      <div class="reveal reveal-delay-2">
+        <p style="font-size:.88rem;color:var(--gray);margin-bottom:20px;line-height:1.7">After months auditing BH practices, MBC has identified six recurring challenges that silently drain revenue — none of which show up in a standard billing report until it's too late.</p>
+        <div class="bh-challenges">
+          <div class="challenge-row">
+            <div class="challenge-area">Medical Necessity Scrutiny</div>
+            <div class="challenge-why">Payers demand detailed clinical documentation to justify every session — far more than most medical specialties require.</div>
+          </div>
+          <div class="challenge-row">
+            <div class="challenge-area">Frequent Policy Changes</div>
+            <div class="challenge-why">Coverage rules for telehealth BH, group therapy, and crisis services change multiple times per year — most practices miss them.</div>
+          </div>
+          <div class="challenge-row">
+            <div class="challenge-area">Credentialing Gaps</div>
+            <div class="challenge-why">LCSWs, LPCs, and NPs often face mid-cycle credentialing issues that silently block reimbursement for months.</div>
+          </div>
+          <div class="challenge-row">
+            <div class="challenge-area">Diagnosis Code Sensitivity</div>
+            <div class="challenge-why">Wrong ICD-10 codes can flag a claim for pre-authorization or automatic denial without any notice to the practice.</div>
+          </div>
+          <div class="challenge-row">
+            <div class="challenge-area">Session Limit Tracking</div>
+            <div class="challenge-why">Most payers impose annual session caps. Manual tracking is where money disappears — claims submitted after cap = 100% denial.</div>
+          </div>
+          <div class="challenge-row">
+            <div class="challenge-area">POS Code Errors</div>
+            <div class="challenge-why">Telehealth POS 02 vs 10 mismatches are among the top rejection triggers since 2021 — invisible until the EOB arrives.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     SPECIALTIES
+══════════════════════════════════════ -->
+<section id="specialties">
+  <div class="section-inner">
+    <span class="section-tag reveal">Coverage</span>
+    <h2 class="section-title reveal">Specialties We Serve</h2>
+    <div class="divider reveal"></div>
+    <p class="section-lead reveal">Specialty-specific expertise across the full clinical spectrum — not generic billing that misses specialty nuance.</p>
+    <div class="spec-grid" style="margin-top:48px">
+      <div class="spec-card reveal reveal-delay-1"><span class="spec-icon">🩺</span><span class="spec-name">Internal Medicine & Family Practice</span></div>
+      <div class="spec-card reveal reveal-delay-2"><span class="spec-icon">🦴</span><span class="spec-name">Orthopedic Surgery</span></div>
+      <div class="spec-card reveal reveal-delay-3"><span class="spec-icon">❤️</span><span class="spec-name">Cardiology & Pulmonology</span></div>
+      <div class="spec-card reveal reveal-delay-4"><span class="spec-icon">🧠</span><span class="spec-name">Psychiatry & Behavioral Health</span></div>
+      <div class="spec-card reveal reveal-delay-1"><span class="spec-icon">👁️</span><span class="spec-name">Ophthalmology & Eye Care</span></div>
+      <div class="spec-card reveal reveal-delay-2"><span class="spec-icon">🔬</span><span class="spec-name">Dermatology</span></div>
+      <div class="spec-card reveal reveal-delay-3"><span class="spec-icon">🚑</span><span class="spec-name">Urgent Care & Emergency Medicine</span></div>
+      <div class="spec-card reveal reveal-delay-4"><span class="spec-icon">💪</span><span class="spec-name">Physical & Occupational Therapy</span></div>
+      <div class="spec-card reveal reveal-delay-1"><span class="spec-icon">🏥</span><span class="spec-name">Gastroenterology</span></div>
+      <div class="spec-card reveal reveal-delay-2"><span class="spec-icon">⭐</span><span class="spec-name">OB/GYN</span></div>
+      <div class="spec-card reveal reveal-delay-3"><span class="spec-icon">🦶</span><span class="spec-name">Podiatry & Foot/Ankle Surgery</span></div>
+      <div class="spec-card reveal reveal-delay-4"><span class="spec-icon">🧬</span><span class="spec-name">Neurology</span></div>
+      <div class="spec-card reveal reveal-delay-1"><span class="spec-icon">🩹</span><span class="spec-name">Wound Care</span></div>
+      <div class="spec-card reveal reveal-delay-2"><span class="spec-icon">🔩</span><span class="spec-name">DME & HCPCS Billing</span></div>
+      <div class="spec-card reveal reveal-delay-3"><span class="spec-icon">🏠</span><span class="spec-name">Hospice & Palliative Care</span></div>
+      <div class="spec-card reveal reveal-delay-4"><span class="spec-icon">➕</span><span class="spec-name">Lab Billing & All Other Specialties</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     ABOUT
+══════════════════════════════════════ -->
+<section id="about">
+  <div class="section-inner">
+    <span class="section-tag reveal">The Consultant Behind MBC RCM</span>
+    <h2 class="section-title reveal">Muhammad Bilawal</h2>
+    <div class="divider reveal"></div>
+    <div class="about-layout">
+      <div class="reveal">
+        <div class="about-card">
+          <div class="about-name">Muhammad Bilawal</div>
+          <div class="about-role">Founder & RCM Consultant · MBC RCM</div>
+          <div class="about-badges">
+            <div class="badge-row"><span class="badge-icon">📍</span> Punjab, Pakistan (Remote · US Hours)</div>
+            <div class="badge-row"><span class="badge-icon">📧</span> bilawal@mbcrcm.com</div>
+            <div class="badge-row"><span class="badge-icon">🌐</span> www.mbcrcm.com</div>
+            <div class="badge-row"><span class="badge-icon">📞</span> 0301-4490726</div>
+            <div class="badge-row"><span class="badge-icon">🕐</span> Available PST / CT Hours</div>
+          </div>
+          <div class="about-divider"></div>
+          <div class="skill-pills">
+            <span class="pill">7+ Yrs Experience</span>
+            <span class="pill">AAPC Certified</span>
+            <span class="pill">HIPAA Certified</span>
+            <span class="pill">BS MLT</span>
+            <span class="pill">Team Lead (25+ Staff)</span>
+            <span class="pill">Multi-Specialty</span>
+            <span class="pill">DME Expert</span>
+            <span class="pill">Behavioral Health</span>
+            <span class="pill">Ophthalmology</span>
+            <span class="pill">Denial Management</span>
+          </div>
+        </div>
+      </div>
+      <div class="about-bio reveal reveal-delay-2">
+        <p>Muhammad Bilawal is the Founder and RCM Consultant behind Medical Billing Consultancy (MBC RCM), a specialized revenue cycle management firm serving US physician practices remotely. With 7+ years of hands-on experience across multi-specialty billing environments, he combines deep technical billing expertise with the operational discipline of a former Team Lead who managed 25+ billing specialists at Omega RCM Solutions.</p>
+        <p>His expertise spans the full revenue cycle — from eligibility verification, medical coding, and clean claim submission through denial management, corrected claims, appeals, AR follow-up, and collections. He has hands-on experience with ophthalmology (CPT 92xxx, 65xxx–67xxx), DME and HCPCS Level II coding, behavioral health billing (ABA, TMS, Spravato), wound care, radiology, and 10+ additional specialties.</p>
+        <p>He holds AAPC Coding Manual Training (2025), HIPAA Certification, and a BS in Medical Lab Technology from GC University, Faisalabad. He is fully equipped for 100% remote work on US PST/CT hours with a dedicated fibre connection, 4G backup, and an uninterruptible power infrastructure.</p>
+
+        <div class="exp-timeline">
+          <div class="exp-item">
+            <div class="exp-dot"></div>
+            <div>
+              <div class="exp-date">Feb 2026 – Apr 2026</div>
+              <div class="exp-role">Behavioral Health Billing Specialist</div>
+              <div class="exp-co">PsychPlus — Independent Contractor</div>
+            </div>
+          </div>
+          <div class="exp-item">
+            <div class="exp-dot"></div>
+            <div>
+              <div class="exp-date">Aug 2023 – Mar 2026</div>
+              <div class="exp-role">Team Lead / Supervisor — Revenue Cycle Management</div>
+              <div class="exp-co">Omega RCM Solutions · 25+ Billing Specialists · Multi-Specialty & DME</div>
+            </div>
+          </div>
+          <div class="exp-item">
+            <div class="exp-dot"></div>
+            <div>
+              <div class="exp-date">Jun 2019 – Aug 2023</div>
+              <div class="exp-role">AR Production / Collections Specialist</div>
+              <div class="exp-co">Omega RCM Solutions · Multi-Specialty & DME</div>
+            </div>
+          </div>
+          <div class="exp-item">
+            <div class="exp-dot"></div>
+            <div>
+              <div class="exp-date">Feb 2019 – May 2019</div>
+              <div class="exp-role">Medical Billing Production Associate</div>
+              <div class="exp-co">Omega RCM Solutions · Promoted to AR Specialist in 4 months</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     SOCIAL / CONNECT
+══════════════════════════════════════ -->
+<section id="connect" style="padding:96px 40px">
+  <div class="section-inner">
+    <span class="section-tag reveal">Find Us Online</span>
+    <h2 class="section-title light reveal">Connect Across Every Platform</h2>
+    <div class="divider reveal"></div>
+    <p class="section-lead light reveal">Follow MBC RCM for weekly billing insights, denial management tips, case studies, and RCM content across all platforms.</p>
+    <div class="social-grid">
+      <a class="social-card reveal reveal-delay-1" href="https://www.mbcrcm.com" target="_blank">
+        <div class="social-logo" style="background:rgba(200,150,12,0.15)">🌐</div>
+        <div>
+          <div class="social-info-platform">Website</div>
+          <div class="social-info-handle">www.mbcrcm.com</div>
+        </div>
+        <div class="social-arrow">→</div>
+      </a>
+      <a class="social-card reveal reveal-delay-2" href="https://www.linkedin.com/in/medical-billing-consultancy/" target="_blank">
+        <div class="social-logo" style="background:rgba(0,119,181,0.15)">💼</div>
+        <div>
+          <div class="social-info-platform">LinkedIn Personal</div>
+          <div class="social-info-handle">Muhammad Bilawal</div>
+        </div>
+        <div class="social-arrow">→</div>
+      </a>
+      <a class="social-card reveal reveal-delay-3" href="https://www.linkedin.com/company/90935720/" target="_blank">
+        <div class="social-logo" style="background:rgba(0,119,181,0.15)">🏢</div>
+        <div>
+          <div class="social-info-platform">LinkedIn Company</div>
+          <div class="social-info-handle">MBC RCM Page</div>
+        </div>
+        <div class="social-arrow">→</div>
+      </a>
+      <a class="social-card reveal reveal-delay-4" href="https://www.facebook.com/MBCPLLC" target="_blank">
+        <div class="social-logo" style="background:rgba(24,119,242,0.15)">📘</div>
+        <div>
+          <div class="social-info-platform">Facebook</div>
+          <div class="social-info-handle">@MBCPLLC</div>
+        </div>
+        <div class="social-arrow">→</div>
+      </a>
+      <a class="social-card reveal reveal-delay-1" href="https://www.tiktok.com/@mbconsultancy4u" target="_blank">
+        <div class="social-logo" style="background:rgba(255,0,80,0.1)">🎵</div>
+        <div>
+          <div class="social-info-platform">TikTok</div>
+          <div class="social-info-handle">@mbconsultancy4u</div>
+        </div>
+        <div class="social-arrow">→</div>
+      </a>
+      <a class="social-card reveal reveal-delay-2" href="https://x.com/medicalbiller7" target="_blank">
+        <div class="social-logo" style="background:rgba(0,0,0,0.2)">✖</div>
+        <div>
+          <div class="social-info-platform">X (Twitter)</div>
+          <div class="social-info-handle">@medicalbiller7</div>
+        </div>
+        <div class="social-arrow">→</div>
+      </a>
+      <a class="social-card reveal reveal-delay-3" href="https://instagram.com/medicalbilling4u" target="_blank">
+        <div class="social-logo" style="background:rgba(225,48,108,0.12)">📸</div>
+        <div>
+          <div class="social-info-platform">Instagram</div>
+          <div class="social-info-handle">@medicalbilling4u</div>
+        </div>
+        <div class="social-arrow">→</div>
+      </a>
+      <a class="social-card reveal reveal-delay-4" href="mailto:info@mbcrcm.com">
+        <div class="social-logo" style="background:rgba(200,150,12,0.12)">✉️</div>
+        <div>
+          <div class="social-info-platform">Email</div>
+          <div class="social-info-handle">info@mbcrcm.com</div>
+        </div>
+        <div class="social-arrow">→</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     CTA
+══════════════════════════════════════ -->
+<section id="cta">
+  <div class="cta-inner">
+    <span class="cta-eyebrow">No Cost · No Commitment</span>
+    <h2 class="cta-title">Stop Leaving Money<br/>on the Table</h2>
+    <p class="cta-sub">Every day your billing isn't optimized is revenue you'll never recover. MBC will show you exactly where your revenue is leaking — and what we would do to fix it — before you spend a single dollar.</p>
+    <div class="cta-btns">
+      <a href="mailto:info@mbcrcm.com" class="btn-primary" style="font-size:1rem;padding:16px 40px">Request Free Billing Audit →</a>
+      <a href="https://www.mbcrcm.com" target="_blank" class="btn-outline" style="font-size:1rem;padding:16px 40px">Visit mbcrcm.com</a>
+    </div>
+    <div class="cta-contacts">
+      <a class="cta-contact" href="mailto:info@mbcrcm.com">
+        <span class="cta-contact-icon">✉</span>info@mbcrcm.com
+      </a>
+      <a class="cta-contact" href="https://www.mbcrcm.com" target="_blank">
+        <span class="cta-contact-icon">🌐</span>www.mbcrcm.com
+      </a>
+      <span class="cta-contact">
+        <span class="cta-contact-icon">📞</span>0301-4490726
+      </span>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     FOOTER
+══════════════════════════════════════ -->
+<footer>
+  <div class="footer-brand">MBC <span>RCM</span> — Medical Billing Consultancy</div>
+  <div class="footer-copy">© 2025 MBC RCM · Muhammad Bilawal · All Rights Reserved</div>
+  <div class="footer-links">
+    <a href="https://www.mbcrcm.com" target="_blank">Website</a>
+    <a href="mailto:info@mbcrcm.com">Email</a>
+    <a href="https://www.linkedin.com/in/medical-billing-consultancy/" target="_blank">LinkedIn</a>
+  </div>
+</footer>
+
+<script>
+/* ════════════════════════════════════════════
+   SCROLL REVEAL
+════════════════════════════════════════════ */
+const revealEls = document.querySelectorAll('.reveal');
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); } });
+}, { threshold: 0.08, rootMargin:'0px 0px -40px 0px' });
+revealEls.forEach(el => revealObserver.observe(el));
+
+/* ════════════════════════════════════════════
+   COUNTER ANIMATION
+════════════════════════════════════════════ */
+const counters = document.querySelectorAll('.counter');
+const countObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if(e.isIntersecting){
+      const el = e.target;
+      const target = parseInt(el.dataset.target);
+      let start = 0;
+      const duration = 1800;
+      const step = Math.ceil(target / (duration / 16));
+      const timer = setInterval(() => {
+        start = Math.min(start + step, target);
+        el.textContent = start;
+        if(start >= target) clearInterval(timer);
+      }, 16);
+      countObserver.unobserve(el);
+    }
+  });
+}, { threshold: 0.5 });
+counters.forEach(c => countObserver.observe(c));
+
+/* ════════════════════════════════════════════
+   BENCHMARK BARS
+════════════════════════════════════════════ */
+const bars = document.querySelectorAll('.bench-bar');
+const barObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if(e.isIntersecting){
+      e.target.style.width = e.target.dataset.width + '%';
+      barObserver.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.5 });
+bars.forEach(b => barObserver.observe(b));
+
+/* ════════════════════════════════════════════
+   CASE STUDY TABS
+════════════════════════════════════════════ */
+function showCS(idx) {
+  document.querySelectorAll('.cs-tab').forEach((t,i) => t.classList.toggle('active', i===idx));
+  document.querySelectorAll('.cs-panel').forEach((p,i) => p.classList.toggle('active', i===idx));
+}
+
+/* ════════════════════════════════════════════
+   NAV SCROLL EFFECT
+════════════════════════════════════════════ */
+window.addEventListener('scroll', () => {
+  document.getElementById('main-nav').style.boxShadow =
+    window.scrollY > 50 ? '0 4px 30px rgba(0,0,0,0.4)' : 'none';
+});
+</script>
+</body>
+</html>
